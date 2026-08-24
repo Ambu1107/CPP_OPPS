@@ -1,48 +1,60 @@
 #include <iostream>
 using namespace std;
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-class employee {
-	public:
+class Employee {
+	public:  
 		string name;
+		int id;
 		char dept;
-		void set_info() {
-			cout<<"Enter name: ";
-			cin>>name;
+		float exp;
+		
+		Employee() {
+			cout<<"Inside Default Constructor"<<endl;
 			
-			cout<<"Enter dept: ";
-			cin>>dept;
-			
-			cout<<"Enter salary: ";
-			cin>>salary;
+			cout<<"Enter Employee Name: "; cin>>name;
+			cout<<"Enter Employee ID: "; cin>>id;
 		}
 		
+		void set_info() {
+			cout<<"Inside Member Function";
+			cout<<"Enter your Department: "; cin>>dept;
+			cout<<"Work Experience: "; cin>>exp;
+			cout<<"Enter your Salary: "; cin>>salary;
+		} 
+		
 		void get_info() {
-			cout<<"--Display Employee data--"<<endl;
-			cout<<"Name: "<<name<<endl<<"Department: "<<dept<<endl<<"Salary: "<<salary<<endl;
-			cout<<"Done"<<endl;
+			cout<<"----Employee Details----"<<endl;
+			cout<<"Employee Name: "<<name<<endl<<"Employee ID: "<<id<<endl<<"Working Department: "<<dept<<endl<<"Working Experience: "<<exp<<endl<<"Salary: "<<salary<<endl;
+		}
+		
+		Employee(int salary, int per) {
+			cout<<"Inside Parameterized Constructor"<<endl;
+			float inc = (salary * per)/100;
+			cout<<"Employee Increment: "<<inc<<endl;
+		}
+		
+		Employee(Employee & e) {
+			cout<<"Inside Copy Constructor"<<endl;
+			name = e.name;
+			id = e.id;
+			dept = e.dept;
 		}
 		
 	private:
 		float salary;
-
 };
-employee e1,e2,e3;
 
-float increment(float s1,float per) {
-	float inc;
-	inc=s1+(s1*per)/100;
-	return inc;
-}
+Employee e1, e2, e3;  // Object Created by Default Constructor
+Employee e4(67542, 10);  // Object Created  by Parameterized Constructor
+Employee e5(e4);  // Object Created by Copy Constructor
 
-int main( ) {
-	/*e1.set_info();
+int main() {
+	
+	e1.set_info();
 	e1.get_info();
 	
-	e3.set_info();
-	e3.get_info();	*/
-	float a;
-	a=increment(67500.5f,10.0f);
-	cout<<a<<endl;
+	e2.set_info();
+	e2.get_info();
+
 	return 0;
 }
