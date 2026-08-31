@@ -1,48 +1,67 @@
 #include <iostream>
 using namespace std;
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-class employee {
-	public:
+class Employee {
+	public:  
 		string name;
+		int id;
 		char dept;
-		void set_info() {
-			cout<<"Enter name: ";
-			cin>>name;
-			
-			cout<<"Enter dept: ";
-			cin>>dept;
-			
-			cout<<"Enter salary: ";
-			cin>>salary;
+		float exp;
+		static string c_name;  // Declaration of Static Data Member
+		
+		Employee() {
+			cout<<"Inside Default Constructor"<<endl;
+			cout<<"Enter Employee Name: "; cin>>name;
+			cout<<"Enter Employee ID: "; cin>>id;
 		}
 		
-		void get_info() {
-			cout<<"--Display Employee data--"<<endl;
-			cout<<"Name: "<<name<<endl<<"Department: "<<dept<<endl<<"Salary: "<<salary<<endl;
-			cout<<"Done"<<endl;
+		~Employee() {
+			cout<<"Inside Destructor"<<endl;
 		}
+		void set_info() {
+			cout<<"Inside Member Function";
+			cout<<"Enter your Department: "; cin>>dept;
+			cout<<"Work Experience: "; cin>>exp;
+			cout<<"Enter your Salary: "; cin>>salary;
+		} 
+		
+		void get_info() {
+			cout<<"----Employee Details----"<<endl;
+			cout<<"Employee Name: "<<this->name<<endl<<"Employee ID: "<<this->id<<endl<<"Working Department: "<<dept<<endl<<"Working Experience: "<<exp<<endl<<"Salary: "<<salary<<endl;
+		}  // This - pointer
+		
+		/*Employee(int salary, int per) {
+			cout<<"Inside Parameterized Constructor"<<endl;
+			float inc = (salary * per)/100;
+			cout<<"Employee Increment: "<<inc<<endl;
+		}
+		
+		Employee(Employee & e) {
+			cout<<"Inside Copy Constructor"<<endl;
+			name = e.name;
+			id = e.id;
+			dept = e.dept;
+		}*/
 		
 	private:
 		float salary;
-
 };
-employee e1,e2,e3;
 
-float increment(float s1,float per) {
-	float inc;
-	inc=s1+(s1*per)/100;
-	return inc;
-}
+string Employee :: c_name = "Cisco Networking Academy";  // Initialization of Static data Member
 
-int main( ) {
-	/*e1.set_info();
+Employee e1, e2, e3;  // Object Created by Default Constructor
+/*Employee e4(67542, 10);  // Object Created  by Parameterized Constructor
+Employee e5(e4);  // Object Created by Copy Constructor*/
+
+int main() {
+	
+	e1.set_info();
 	e1.get_info();
 	
-	e3.set_info();
-	e3.get_info();	*/
-	float a;
-	a=increment(67500.5f,10.0f);
-	cout<<a<<endl;
+	e2.set_info();
+	e2.get_info();
+	
+	cout<<"Company Name: "<<Employee::c_name<<endl;  // Access of Static Data Member
+	
 	return 0;
 }
