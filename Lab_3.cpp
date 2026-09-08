@@ -1,12 +1,14 @@
+// Data Members, Member Function, User-Defined Functions, In-Built Functions
+
 #include <iostream>
 using namespace std;
 
 class employee {
-	public:
+	public:  // Data Members (Public Access)
 		string name;
 		char dept;
 		
-		void set_info() {
+		void set_info() {  // Member Function to set the information (setter)
 			cout<<"Enter Name: ";
 			cin>>name;
 			
@@ -17,21 +19,22 @@ class employee {
 			cin>>salary;
 		}
 		
-		void get_info() {
+		void get_info() {  // Member Function to get the information (getter)
 			cout<<"--Employee Form--"<<endl;
 			cout<<"Name: "<<name<<endl<<"Department: "<<dept<<endl<<"Salary: "<<salary<<endl;
 			cout<<"--------------"<<endl;
 		}
-	private:
+
+	private:  // Data Members (Private Access)
 		float salary;
 };
 
-employee e1,e2,e3;
+employee e1,e2,e3;  // Object Creation
 
+// User-defined Function to calculate increment
 float increment(float earning, float per) {
 	float inc;
 	inc = (earning*per)/100;
-	
 	return inc;
 }
 
@@ -43,6 +46,7 @@ int main( ) {
 	
 	e2.set_info();
 	e2.get_info();*/
+	
 	float e,p,in;
 	cout<<"Enter your salary to calculate increment: ";
 	cin>>e;
